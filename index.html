@@ -5,24 +5,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
     <style>
-        body { background: #1A1A2E; color: white; font-family: Arial; }
-        .verify-card { background: rgba(255,255,255,0.05); border-radius: 15px; }
-        .btn-verify { background: linear-gradient(135deg, #6C5CE7, #FD79A8); }
+        body { background: #1A1A2E; color: white; font-family: Arial; height: 100vh; }
+        .verify-card { background: rgba(255,255,255,0.05); border-radius: 15px; max-width: 500px; }
+        .btn-verify { background: linear-gradient(135deg, #6C5CE7, #FD79A8); border: none; }
     </style>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="container d-flex justify-content-center align-items-center h-100">
         <div class="verify-card p-5 text-center">
             <h2><i class="fas fa-lock me-2"></i>Content Locked</h2>
-            <p class="my-4">Verify to unlock streams</p>
-            <button id="verifyBtn" class="btn btn-verify btn-lg">
+            <p class="my-4">Verify to unlock premium streams</p>
+            <button id="verifyBtn" class="btn btn-verify btn-lg px-5">
                 <i class="fas fa-user-check me-2"></i> Verify Now
             </button>
         </div>
     </div>
+
     <script>
+        // Check if already verified
+        if(localStorage.getItem('verified') === 'true' && 
+           localStorage.getItem('expiry') > Date.now()) {
+            window.location.href = "verified.html";
+        }
+
         document.getElementById('verifyBtn').addEventListener('click', function() {
             const API_TOKEN = "9b162b0c5ef2502c3fb9745fefec7788c18726df";
+            const DESTINATION = encodeURIComponent(window.location.origin + "/success.html");
             window.location.href = `https://vplink.in/SportsVerify`;
         });
     </script>
