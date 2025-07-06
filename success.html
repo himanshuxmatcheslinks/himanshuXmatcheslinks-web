@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verified</title>
+    <script>
+        localStorage.setItem('verified', 'true');
+        localStorage.setItem('expiry', Date.now() + 86400000); // 24 hours
+        setTimeout(() => window.location.href = "https://matcheslinks-web.vercel.app/", 2000);
+    </script>
+</head>
+<body>
+    <p>Verification successful! Redirecting...</p>
+</body>
+</html>
